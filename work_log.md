@@ -17,3 +17,12 @@
 *   **Feature Engineering:** Extracted character-level n-grams from Japanese window titles using `TfidfVectorizer`. Engineered lag features (shifting app history by 1 and 2 rows) to give the model sequential memory.
 *   **Modeling:** Trained a Random Forest classifier. Discovered that strict chronological splitting (`shuffle=False`) drops accuracy heavily due to tasks being segregated by time in this specific session. Random shuffling (`shuffle=True`) proved the TF-IDF and lag features are highly predictive.
 *   **Next Steps:** Train the final model on 100% of Dataset A and run inference on the unlabelled Dataset B to generate the final `segments.jsonl` deliverable.
+
+## Day 3: September 14, 2026
+
+**Focus:** Inference and Final Deliverable Generation
+
+*   **Data Processing:** Loaded and concatenated unlabelled Dataset B event logs, strictly maintaining chronological order.
+*   **Feature Alignment:** Applied the identical TF-IDF vectorization and lag feature engineering (shifting apps and events) used in Dataset A to ensure matrix compatibility.
+*   **Inference:** Trained the final Random Forest classifier on 100% of the labeled Dataset A and predicted the business processes for Dataset B.
+*   **Deliverable:** Aggregated contiguous row-level predictions into discrete time blocks and exported the results to `segments.jsonl`.
